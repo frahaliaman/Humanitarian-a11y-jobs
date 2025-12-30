@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Humanitarian A11y Jobs — Accessibility roles in nonprofits & NGOs</title>
+  <meta name="description" content="Curated accessibility, disability-inclusion, and inclusive design roles in nonprofits, NGOs, humanitarian orgs, and public-interest institutions." />
+
+  <style>
+    :root{
+      --bg:#0b0e14;
+      --surface:#111827;
+      --surface2:#0f172a;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --line:rgba(255,255,255,.08);
+      --accent:#7dd3fc;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --max:1100px;
+      --font:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(125,211,252,.18), transparent 60%),
+        radial-gradient(900px 500px at 100% 10%, rgba(125,211,252,.10), transparent 55%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+      outline:3px solid rgba(125,211,252,.75);
+      outline-offset:3px;
+      border-radius:10px;
+    }
+
+    .container{max-width:var(--max);margin:0 auto;padding:20px}
+    .skip-link{
+      position:absolute;left:-999px;top:10px;
+      background:#fff;color:#000;padding:10px 12px;border-radius:12px;z-index:999;
+    }
+    .skip-link:focus{left:12px}
+
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(10px);
+      background:rgba(11,14,20,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px}
+    .logo{
+      width:34px;height:34px;border-radius:12px;
+      background:linear-gradient(135deg, rgba(125,211,252,.9), rgba(125,211,252,.35));
+      box-shadow:0 10px 25px rgba(125,211,252,.15);
+    }
+    .nav-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .link{
+      text-decoration:none;color:var(--muted);
+      padding:8px 10px;border-radius:12px;
+    }
+    .link:hover{background:rgba(255,255,255,.04);color:var(--text)}
+    .btn{
+      appearance:none;border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      padding:10px 12px;border-radius:14px;
+      cursor:pointer;text-decoration:none;
+      display:inline-flex;align-items:center;gap:8px;
+      font-weight:650;
+    }
+    .btn:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14)}
+    .btn-primary{
+      background:linear-gradient(135deg, rgba(125,211,252,.22), rgba(125,211,252,.10));
+      border-color:rgba(125,211,252,.28);
+    }
+
+    main{padding:26px 0 50px}
+    .panel{
+      border:1px solid var(--line);
+      background:rgba(17,24,39,.55);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    .hero{padding:24px}
+    .hero h1{
+      margin:0 0 10px;
+      font-size:clamp(26px, 4vw, 40px);
+      line-height:1.1;
+      letter-spacing:-.5px;
+    }
+    .hero p{margin:0 0 16px;color:var(--muted);max-width:80ch}
+
+    .searchbar{
+      display:grid;grid-template-columns:1.4fr 1fr auto;
+      gap:10px;align-items:end;margin-top:10px;
+    }
+    label{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:6px}
+    .field,.select{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 12px;
+      background:rgba(0,0,0,.25);
+      color:var(--text);
+    }
+    .field::placeholder{color:rgba(229,231,235,.45)}
+    .hint{margin-top:10px;font-size:14px;color:var(--muted)}
+
+    .layout{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:18px;
+      margin-top:18px;
+      align-items:start;
+    }
+    .panel h2{font-size:16px;margin:0 0 12px;letter-spacing:.2px}
+
+    .filters{display:grid;gap:12px}
+    .chip-row{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      color:var(--muted);
+      font-size:13px;cursor:pointer;user-select:none;
+    }
+    .chip input{accent-color:var(--accent)}
+    .chip:hover{border-color:rgba(255,255,255,.16);color:var(--text)}
+
+    .results-head{
+      display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px
+    }
+    .count{color:var(--muted);font-size:14px}
+
+    .cards{display:grid;gap:12px}
+    .card{
+      border:1px solid var(--line);
+      background:rgba(17,24,39,.65);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .card-top{display:flex;justify-content:space-between;gap:12px;align-items:start}
+    .job-title{margin:0 0 6px;font-size:18px;letter-spacing:-.2px}
+    .job-title a{text-decoration:none}
+    .job-title a:hover{text-decoration:underline;text-underline-offset:3px}
+    .meta{color:var(--muted);font-size:14px;margin:0}
+
+    .pillset{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .pill{
+      font-size:12.5px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.2);
+    }
+    .pill.info{border-color:rgba(125,211,252,.25);background:rgba(125,211,252,.08)}
+    .pill.good{border-color:rgba(167,243,208,.25);background:rgba(167,243,208,.08)}
+    .posted{white-space:nowrap;font-size:12.5px;color:var(--muted);margin-top:2px}
+
+    footer{border-top:1px solid var(--line);margin-top:18px;padding:18px 0;color:var(--muted);font-size:14px}
+    .footer-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+
+    @media (max-width: 920px){ .layout{grid-template-columns:1fr} }
+    @media (max-width: 760px){
+      .searchbar{grid-template-columns:1fr}
+      .btn{width:100%;justify-content:center}
+      .nav{flex-wrap:wrap}
+      .nav-links{width:100%;justify-content:space-between}
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#jobs">Skip to job listings</a>
+
+  <header>
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#">
+          <span class="logo" aria-hidden="true"></span>
+          <span>Humanitarian A11y Jobs</span>
+        </a>
+
+        <div class="nav-links">
+          <a class="link" href="#jobs">Jobs</a>
+          <a class="link" href="#about">About</a>
+          <a class="btn btn-primary" href="#post">Post a job</a>
+          <a class="btn" href="#subscribe">Subscribe</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <!-- HERO -->
+    <section class="panel hero" aria-labelledby="page-title">
+      <h1 id="page-title">Accessibility & inclusion jobs for the public good</h1>
+      <p>
+        Curated roles across nonprofits, NGOs, humanitarian orgs, UN/multilateral institutions, and public-interest teams.
+        Focused on digital accessibility, disability inclusion, inclusive design, accessible communications, and policy/compliance.
+      </p>
+
+      <!-- SEARCH (static UI) -->
+      <form class="searchbar" role="search" aria-label="Search jobs" action="#" method="get">
+        <div>
+          <label for="q">Keyword</label>
+          <input class="field" id="q" name="q" type="search" placeholder="e.g., WCAG, inclusive design, accessibility specialist" />
+        </div>
+
+        <div>
+          <label for="where">Location / Remote</label>
+          <input class="field" id="where" name="where" type="text" placeholder="e.g., Remote, Canada, MENA, Nairobi" />
+        </div>
+
+        <div>
+          <button class="btn btn-primary" type="submit">🔎 Search</button>
+        </div>
+      </form>
+
+      <p class="hint">
+        Tip: try keywords like <strong>disability inclusion</strong>, <strong>accessible communications</strong>, <strong>civic tech</strong>, or <strong>EN 301 549</strong>.
+      </p>
+    </section>
+
+    <!-- JOBS + FILTERS -->
+    <section class="layout" id="jobs" aria-label="Job listings">
+      <!-- Filters -->
+      <aside class="panel" aria-label="Filters">
+        <h2>Filters</h2>
+
+        <div class="filters">
+          <div>
+            <label>Work arrangement</label>
+            <div class="chip-row" role="group" aria-label="Work arrangement">
+              <label class="chip"><input type="checkbox" /> Remote</label>
+              <label class="chip"><input type="checkbox" /> Hybrid</label>
+              <label class="chip"><input type="checkbox" /> On-site</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="org">Org type</label>
+            <select class="select" id="org" name="org">
+              <option value="">Any</option>
+              <option>Nonprofit</option>
+              <option>NGO</option>
+              <option>Humanitarian</option>
+              <option>UN / Multilateral</option>
+              <option>Public sector / Civic tech</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="role">Role type</label>
+            <select class="select" id="role" name="role">
+              <option value="">Any</option>
+              <option>Accessibility / A11y</option>
+              <option>Inclusive UX / Design</option>
+              <option>Engineering</option>
+              <option>Policy / Compliance</option>
+              <option>Programs / Operations</option>
+              <option>Comms / Content</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="level">Seniority</label>
+            <select class="select" id="level" name="level">
+              <option value="">Any</option>
+              <option>Entry / Junior</option>
+              <option>Mid</option>
+              <option>Senior</option>
+              <option>Lead / Manager</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Tags</label>
+            <div class="chip-row" role="group" aria-label="Tags">
+              <label class="chip"><input type="checkbox" /> WCAG</label>
+              <label class="chip"><input type="checkbox" /> Disability inclusion</label>
+              <label class="chip"><input type="checkbox" /> Policy</label>
+              <label class="chip"><input type="checkbox" /> Audits</label>
+              <label class="chip"><input type="checkbox" /> Content</label>
+            </div>
+          </div>
+
+          <button class="btn" type="button" aria-label="Clear filters (placeholder)">Clear filters</button>
+        </div>
+      </aside>
+
+      <!-- Results -->
+      <section class="panel" aria-label="Results">
+        <div class="results-head">
+          <h2 style="margin:0;">Latest roles</h2>
+          <div class="count" aria-live="polite">Showing 6 jobs</div>
+        </div>
+
+        <div class="cards" role="list">
+          <article class="card" role="listitem">
+            <div class="card-top">
+              <div>
+                <h3 class="job-title"><a href="#job-1">Accessibility Specialist (Digital)</a></h3>
+                <p class="meta">Global Relief Network • Humanitarian • Remote (UTC−5 to UTC+2)</p>
+                <div class="pillset" aria-label="Tags">
+                  <span class="pill info">Remote</span>
+                  <span class="pill good">Full-time</span>
+                  <span class="pill">WCAG</span>
+                  <span class="pill">Audits</span>
+                </div>
+              </div>
+              <div class="posted">Posted: 2 days ago</div>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <div class="card-top">
+              <div>
+                <h3 class="job-title"><a href="#job-2">Disability Inclusion Advisor</a></h3>
+                <p class="meta">Access & Dignity Foundation • NGO • Nairobi (Hybrid)</p>
+                <div class="pillset" aria-label="Tags">
+                  <span class="pill info">Hybrid</span>
+                  <span class="pill">Programs</span>
+                  <span class="pill good">Disability inclusion</span>
+                  <span class="pill">Stakeholders</span>
+                </div>
+              </div>
+              <div class="posted">Posted: 4 days ago</div>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <div class="card-top">
+              <div>
+                <h3 class="job-title"><a href="#job-3">Inclusive UX Designer</a></h3>
+                <p class="meta">Civic Services Lab • Public sector • Canada (Remote)</p>
+                <div class="pillset" aria-label="Tags">
+                  <span class="pill info">Remote</span>
+                  <span class="pill">Design systems</span>
+                  <span class="pill">Research</span>
+                  <span class="pill">Inclusive UX</span>
+                </div>
+              </div>
+              <div class="posted">Posted: 1 week ago</div>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <div class="card-top">
+              <div>
+                <h3 class="job-title"><a href="#job-4">Accessible Communications Officer</a></h3>
+                <p class="meta">Health Equity Alliance • Nonprofit • London (On-site)</p>
+                <div class="pillset" aria-label="Tags">
+                  <span class="pill">PDF/Docs</span>
+                  <span class="pill">Plain language</span>
+                  <span class="pill">Alt text</span>
+                </div>
+              </div>
+              <div class="posted">Posted: 8 days ago</div>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <div class="card-top">
+              <div>
+                <h3 class="job-title"><a href="#job-5">Accessibility Engineer</a></h3>
+                <p class="meta">OpenAid Platforms • UN / Multilateral • Remote</p>
+                <div class="pillset" aria-label="Tags">
+                  <span class="pill info">Remote</span>
+                  <span class="pill">Engineering</span>
+                  <span class="pill">ARIA</span>
+                  <span class="pill">Testing</span>
+                </div>
+              </div>
+              <div class="posted">Posted: 10 days ago</div>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <div class="card-top">
+              <div>
+                <h3 class="job-title"><a href="#job-6">Accessibility Policy & Compliance Lead</a></h3>
+                <p class="meta">International Education Trust • NGO • Geneva (Hybrid)</p>
+                <div class="pillset" aria-label="Tags">
+                  <span class="pill info">Hybrid</span>
+                  <span class="pill">EN 301 549</span>
+                  <span class="pill">Procurement</span>
+                  <span class="pill">Governance</span>
+                </div>
+              </div>
+              <div class="posted">Posted: 2 weeks ago</div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="panel" id="about" style="margin-top:18px;">
+      <h2>About</h2>
+      <p style="margin:0;color:var(--muted);max-width:80ch;">
+        Humanitarian A11y Jobs is an exploration of what a focused, accessibility-first job board could look like for
+        nonprofit and humanitarian organizations. This page is a static prototype and will evolve based on community feedback.
+      </p>
+    </section>
+
+    <!-- POST A JOB (placeholder) -->
+    <section class="panel" id="post" style="margin-top:18px;">
+      <h2>Post a job (placeholder)</h2>
+      <p style="margin:0;color:var(--muted);max-width:80ch;">
+        For an MVP, you can replace this with a link to a Google Form or Typeform. Later, add moderation + a simple posting workflow.
+      </p>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="#subscribe">Get updates</a>
+        <a class="btn" href="#jobs">Browse jobs</a>
+      </div>
+    </section>
+
+    <!-- SUBSCRIBE (placeholder) -->
+    <section class="panel" id="subscribe" style="margin-top:18px;">
+      <h2>Subscribe (placeholder)</h2>
+      <p style="margin:0;color:var(--muted);max-width:80ch;">
+        Add your email capture tool here (Buttondown, ConvertKit, Mailchimp, etc.). Keep it lightweight.
+      </p>
+    </section>
+
+    <footer>
+      <div class="footer-row container" style="padding:0;">
+        <div>© <span id="year"></span> Humanitarian A11y Jobs</div>
+        <div aria-label="Footer links">
+          <a class="link" href="#about">About</a>
+          <a class="link" href="#post">Post a job</a>
+          <a class="link" href="#subscribe">Subscribe</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
